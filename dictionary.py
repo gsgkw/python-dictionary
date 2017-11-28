@@ -10,8 +10,11 @@ def translate(text):
         return data[word]
     else:
         suggestions = get_close_matches(word, data.keys())
+        closest_match = suggestions[0]
         if len(suggestions) > 0:
-            return "Did you mean '%s'?" % suggestions[0]
+            yes_no = input("Did you mean '%s'? Enter Y for yes, N for no." % closest_match)
+            if yes_no.lower() = "y":
+                return closest_match
         else: "Word is not found."
 
 word = input("Enter word: ")
