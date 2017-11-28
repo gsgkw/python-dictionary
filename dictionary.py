@@ -12,14 +12,20 @@ def translate(text):
         suggestions = get_close_matches(word, data.keys())
         if len(suggestions) > 0:
             closest_match = suggestions[0]
-            yes_no = input("Did you mean '%s'? Enter Y for yes, N for no." % closest_match)
-            if yes_no.lower() == "y":
-                return data[closest_match]
-            else: return not_found(word)
-        else: return not_found(word)
+            return check_match(closest_match)
+        else: return not_found_message(word)
 
-def not_found(lookup):
-    return "'%s' is not found." % lookup
+def check_match(closest_match):
+    yes_no = check_match_message(closest_match)
+    if yes_no.lower() == "y":
+        return data[closest_match]
+    else: return not_found_message(word)
+
+def check_match_message(word):
+    return input("Did you mean '%s'? Enter Y for yes, N for no." % word)
+
+def not_found_message(word):
+    return "'%s' is not found." % word
 
 word = input("Enter word: ")
 
