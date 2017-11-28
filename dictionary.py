@@ -27,6 +27,10 @@ def check_match_message(word):
 def not_found_message(word):
     return "'%s' is not found." % word
 
+
 word = input("Enter word: ")
 
-print(translate(word))
+output = translate(word)
+
+for item in output:
+    print(item)
